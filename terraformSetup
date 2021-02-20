@@ -1,0 +1,57 @@
+
+Ref. URL:https://mithuntechnologies-devops.blogspot.com/search/label/Terraform
+
+File Extension should be .tf
+
+1.Create RED-HAT Instance with t2.micro sys in AWS
+
+2.Create IAM User
+
+
+
+3.Open putty:follow below instructions
+       #Login as a root user in ec2 instance
+        sudo su -
+
+        #You will need to upgrade your system and packages
+        yum update -y
+
+        #Install wget and unzip packages
+        yum install wget unzip vim -y
+
+        #Download the terraform software.
+        #Use https://www.terraform.io/downloads.html to download the terraform software.
+
+        wget https://releases.hashicorp.com/terraform/0.14.0/terraform_0.14.0_linux_amd64.zip
+
+        #Extract the terraform software.
+        unzip terraform_0.14.0_linux_amd64.zip -d /usr/local/bin/
+
+        #Check the version
+        terraform -v (OR) terraform version
+
+        #Help
+        terraform -help
+        
+ 5.Create file: vi myFirstTerraformFile.tf
+ 
+        provider "aws" {
+          region = "ap-south-1"  // Avaialibility Zone
+          access_key = "AIA4UQE3BUQ6GQ3BAEO"   // Created in IAM in AWS
+          secret_key = "5LAzj2tYFxf1NNvmvz0Z1UASoEzDZHlc6R5wHF"   // Created in IAM in AWS
+        }
+
+        resource "aws_instance" "AWSServer" {
+          ami = "ami-0a74bfeb190bd404f"   //Which Instance Name we need to create 
+          instance_type = "t2.micro"      // Type of Instance
+          key_name = "mithuntechnologies"  // .pem file will created while creating Instance or Existing file
+          security_groups = ["launch-wizard-1"]   // Security Group any thing we can use (AWS)
+          tags = {
+           Name = "Terrafrom Server"    // Instance Name which you want to crate
+          }
+        }
+       
+   6.Follow final steps: terraformImage.PNG
+                 
+          
+        
