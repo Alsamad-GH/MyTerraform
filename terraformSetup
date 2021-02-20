@@ -47,7 +47,7 @@ File Extension should be .tf
           key_name = "mithuntechnologies"  // .pem file will created while creating Instance or Existing file
           security_groups = ["launch-wizard-1"]   // Security Group any thing we can use (AWS)
           tags = {
-           Name = "Terrafrom Server"    // Instance Name which you want to crate
+           Name = "My New Terrafrom Server"    // Instance Name which you want to crate
           }
         }
        
